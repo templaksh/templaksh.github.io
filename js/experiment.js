@@ -51,10 +51,12 @@ $(document).mousemove(function (event) {
 
 function stopDistTracking() {
 	console.log('curDist: ', curDist);
+	tempDist = curDist
 	isDistTracking = false
 	curDist = 0
 	prevPos.x = null
 	prevPos.y = null
+	return tempDist
 }
 
 
@@ -247,8 +249,8 @@ function markingMenuOnMouseDown(e) {
 
 //Function to start tracking timer on mouse down
 function markingMenuOnSelect(selectedItem) {
-	stopDistTracking()
-	tracker.recordSelectedItem(selectedItem.name);
+	curDist = stopDistTracking()
+	tracker.recordSelectedItem(selectedItem.name,curDist);
 	document.getElementById("selectedItem").innerHTML = selectedItem.name;
 }
 
@@ -320,7 +322,7 @@ function toggleRadialMenu(e) {
 	} else {
 
 		// Record previous item
-		tracker.recordSelectedItem(null);
+		tracker.recordSelectedItem(null,null);
 
 		if (radialMenuTree != null) {
 			menu = module.exports(radialMenuTree, {
@@ -339,8 +341,8 @@ function toggleRadialMenu(e) {
 //Callback for radialmenu when a leaf node is selected
 function radialMenuOnSelect() {
 
-	stopDistTracking()
-	tracker.recordSelectedItem(this.id);
+	curDist = stopDistTracking()
+	tracker.recordSelectedItem(this.id,curDist);
 	var radialmenu = document.getElementById('radialmenu');
 	radialmenu.parentNode.removeChild(radialmenu);
 
