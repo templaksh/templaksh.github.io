@@ -22,8 +22,18 @@ var tracker = new ExperimentTracker();
 var markingMenuSubscription = null;
 var radialMenuSvg = null;
 
+// Code for measuring distance
+var isDistTracking = false
+var curDist = 0
+var prevPos = {x:null,y:null}
 
+function startDistTracking(e){
+	isDistTracking = true
+	curDist = 0
+	console.log('e.clientX: ',e.clientX);
+	console.log('e.clientY: ',e.clientY);
 
+}
 
 
 // Load CSV files from data and return text
@@ -163,7 +173,7 @@ function initializeMarkingMenu(){
 	}
 	var markingMenuContainer = document.getElementById('marking-menu-container');
 	if(markingMenuContainer == null){
-		interactionContainer.innerHTML += "<div id=\"marking-menu-container\" style=\"height:100%;width:100%\" onmousedown=\"markingMenuOnMouseDown()\" oncontextmenu=\"preventRightClick(event)\"></div>";
+		interactionContainer.innerHTML += "<div id=\"marking-menu-container\" style=\"height:100%;width:100%\" onmousedown=\"markingMenuOnMouseDown(event)\" oncontextmenu=\"preventRightClick(event)\"></div>";
 	}
 }
 
@@ -208,9 +218,9 @@ function formatMarkingMenuData(data) {
 }
 
 // Function to start tracking timer on mouse down
-function markingMenuOnMouseDown(){
-
+function markingMenuOnMouseDown(e){
 	tracker.startTimer();
+	startDistTracking(e)
 }
 
 //Function to start tracking timer on mouse down
