@@ -27,12 +27,33 @@ var isDistTracking = false
 var curDist = 0
 var prevPos = {x:null,y:null}
 
+// document.addEventListener('mousemove', onMouseUpdate, false);
+
 function startDistTracking(e){
 	isDistTracking = true
 	curDist = 0
 	console.log('e.clientX: ',e.clientX);
 	console.log('e.clientY: ',e.clientY);
+	prevPos.x = e.clientX
+	prevPos.y = e.clientY
+}
 
+$(document).mousemove(function(event) {
+    // if(prevPos.x) {
+	if(isDistTracking){
+        curDist += Math.sqrt(Math.pow(prevPos.y - event.clientY, 2) + Math.pow(prevPos.x - event.clientX, 2));
+    // $('span').text('So far your mouse ran this many pixels:   ' + Math.round(totalDistance));
+    }
+    prevPos.x = event.clientX;
+    prevPos.y = event.clientY;
+});
+
+function stopDistTracking(){
+	console.log('curDist: ',curDist);
+	isDistTracking = false
+	curDist = 0
+	prevPos.x = null
+	prevPos.y = null
 }
 
 
@@ -225,7 +246,7 @@ function markingMenuOnMouseDown(e){
 
 //Function to start tracking timer on mouse down
 function markingMenuOnSelect(selectedItem){
-
+	stopDistTracking()
 	tracker.recordSelectedItem(selectedItem.name);
 	document.getElementById("selectedItem").innerHTML = selectedItem.name;
 }
