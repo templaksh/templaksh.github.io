@@ -315,6 +315,7 @@ function toggleRadialMenu(e) {
 
 			// Start timing once menu appears
 			tracker.startTimer();
+			startDistTracking(e)
 		}
 	} else {
 
@@ -329,6 +330,7 @@ function toggleRadialMenu(e) {
 
 			// Start timing once menu appears
 			tracker.startTimer();
+			startDistTracking(e)
 		}
 	}
 	e.preventDefault();
@@ -337,6 +339,7 @@ function toggleRadialMenu(e) {
 //Callback for radialmenu when a leaf node is selected
 function radialMenuOnSelect() {
 
+	stopDistTracking()
 	tracker.recordSelectedItem(this.id);
 	var radialmenu = document.getElementById('radialmenu');
 	radialmenu.parentNode.removeChild(radialmenu);
