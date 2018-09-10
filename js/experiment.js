@@ -51,7 +51,7 @@ $(document).mousemove(function (event) {
 
 function stopDistTracking() {
 	console.log('curDist: ', curDist);
-	tempDist = curDist
+	var tempDist = curDist
 	isDistTracking = false
 	curDist = 0
 	prevPos.x = null
