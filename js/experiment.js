@@ -138,7 +138,7 @@ function recurRadialWidth(newObj, limitWidth) {
 		newObj.splice(limitWidth, 1)
 	}
 	for (var i = 0; i < newObj.length; i++) {
-		if (newObj[i]._children.length > 0) {
+		if (newObj[i]._children && newObj[i]._children.length > 0) {
 			newObj[i]._children = recurRadialWidth(newObj[i]._children, limitWidth)
 		}
 	}
