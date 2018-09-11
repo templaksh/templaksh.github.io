@@ -120,8 +120,8 @@ function recurMarkingWidth(newObj, limitWidth) {
 		newObj.splice(limitWidth - 1, 1)
 	}
 	for (var i = 0; i < newObj.length; i++) {
-		if (newObj.children.length > 0) {
-			newObj.children = recurMarkingWidth(newObj.children, limitWidth)
+		if (newObj[i].children.length > 0) {
+			newObj[i].children = recurMarkingWidth(newObj[i].children, limitWidth)
 		}
 	}
 	return newObj
