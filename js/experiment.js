@@ -117,7 +117,7 @@ function loadNextTrial(e) {
 
 function recurMarkingWidth(newObj, limitWidth) {
 	while (newObj.length > limitWidth) {
-		newObj.splice(limitWidth - 1, 1)
+		newObj.splice(limitWidth, 1)
 	}
 	for (var i = 0; i < newObj.length; i++) {
 		if (newObj[i].children.length > 0) {
