@@ -2,7 +2,7 @@ var data = {
     Animals: {
         Reptiles: ["Snakes", "Turtle", "Lizard", "Crocodile", "Gecko", "Iguanids"],
         Fish: ["Guppy", "Goldfish", "Tench", "Zander", "Swordfish", "Whiting"],
-        Amphibians: ["Smooth newt", "Tomato Frog", "Water Frog", "Salamander", "Golden Frog", "Sunset Frog"],
+        Amphibian: ["Smooth newt", "Tomato Frog", "Water Frog", "Salamander", "Golden Frog", "Sunset Frog"],
         Invetebrates: ["Silverfish", "Bedbug", "Mealworm", "Snail", "Spider", "Crab"],
         Mammals: ["Bat", "Rodent", "Bear", "Deer", "Sloth", "Ape"],
         Birds: ["Eagle", "Seagull", "Parrot", "Owl", "Crane", "Penguin"],
@@ -19,7 +19,7 @@ var data = {
         Tops: ["T-Shirt", "Polo Shirts", "Shirts", "Flannel", "Blouse", "Dress"],
         Bottoms: ["Jeans", "Leggings", "Tights", "Skirts", "Pants", "Shorts"],
         Outerwear: ["Coat", "Jacket", "Sweaters", "Cardigans", "Blousons", "Parka"],
-        Shoes: ["Sneakers", "Espadrilles", "Brogues", "Sandals", "Chukka", "Slips"],
+        Shoes: ["Sneakers", "Boat Shoe", "Brogues", "Sandals", "Chukka", "Slip-Ons"],
         Innerwear: ["Boxers", "Briefs", "Trunks", "Bra", "Bikini", "Socks"],
         Hats: ["Beanie", "Cap", "Bowler", "Boater", "Sombrero", "Beret"]
     },
@@ -42,6 +42,9 @@ var data = {
     },
 }
 
+var maxStrLen = 10 //"Vegetables"
+// var maxStrLen = 9 //"Continent"
+// var maxStrLen = 13 //"Rock Climbing"
 var itemToId = {}
 var idToItem = {}
 var uid = 0
@@ -55,6 +58,9 @@ function resetParams() {
 }
 
 function addItem(item, parent) {
+    if(item.length > maxStrLen){
+        console.log('item: ',item);
+    }
     uid += 1
     id = uid
     itemToId[item] = id
@@ -94,4 +100,4 @@ function recurAddition(itemList, parent, depth, maxDepth) {
 
 resetParams()
 recurAddition(data, null, 1, 3)
-console.log('fStr: ', fStr);
+// console.log('fStr: ', fStr);
