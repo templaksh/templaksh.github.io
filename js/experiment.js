@@ -45,7 +45,7 @@ $(document).mousemove(function (event) {
 		// $('span').text('So far your mouse ran this many pixels:   ' + Math.round(totalDistance));
 		prevPos.x = event.clientX;
 		prevPos.y = event.clientY;
-		console.log('movingDist: ',curDist);
+		console.log('movingDist: ', curDist);
 	}
 });
 
@@ -87,7 +87,7 @@ function initExperiment() {
 			'Menu Type': menuType,
 			'Menu Depth': menuDepth,
 			'Target Item': targetItem,
-			'Menu Breadth':menuBreadth
+			'Menu Breadth': menuBreadth
 		};
 	}
 
@@ -113,6 +113,24 @@ function loadNextTrial(e) {
 	e.preventDefault();
 	nextTrial();
 
+}
+
+function recurMarkingWidth(newObj, limitWidth) {
+	while (newObj.length > limitWidth) {
+		newObj.splice(limitWidth - 1, 1)
+	}
+	for (var i = 0; i < newObj.length; i++) {
+		if (newObj.children.length > 0) {
+			newObj.children = recurMarkingWidth(newObj.children, limitWidth)
+		}
+	}
+	return newObj
+}
+
+function genMarkingWidth(obj, limitWidth) {
+	var newObj = JSON.parse(JSON.stringify(obj))
+	newObj = recurMarkingWidth(newObj, limitWidth)
+	return newObj
 }
 
 // Move to next trai and record events
@@ -255,7 +273,7 @@ function markingMenuOnMouseDown(e) {
 //Function to start tracking timer on mouse down
 function markingMenuOnSelect(selectedItem) {
 	curDist = stopDistTracking()
-	tracker.recordSelectedItem(selectedItem.name,curDist);
+	tracker.recordSelectedItem(selectedItem.name, curDist);
 	document.getElementById("selectedItem").innerHTML = selectedItem.name;
 }
 
@@ -327,7 +345,7 @@ function toggleRadialMenu(e) {
 	} else {
 
 		// Record previous item
-		tracker.recordSelectedItem(null,null);
+		tracker.recordSelectedItem(null, null);
 
 		if (radialMenuTree != null) {
 			menu = module.exports(radialMenuTree, {
@@ -347,7 +365,7 @@ function toggleRadialMenu(e) {
 function radialMenuOnSelect() {
 
 	curDist = stopDistTracking()
-	tracker.recordSelectedItem(this.id,curDist);
+	tracker.recordSelectedItem(this.id, curDist);
 	var radialmenu = document.getElementById('radialmenu');
 	radialmenu.parentNode.removeChild(radialmenu);
 
