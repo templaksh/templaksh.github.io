@@ -132,16 +132,7 @@ function genMarkingWidth(obj, limitWidth) {
 	newObj = recurMarkingWidth(newObj, limitWidth)
 	return newObj
 }
-function cloneObject(obj) {
-    var clone = {};
-    for(var i in obj) {
-        if(obj[i] != null &&  typeof(obj[i])=="object")
-            clone[i] = cloneObject(obj[i]);
-        else
-            clone[i] = obj[i];
-    }
-    return clone;
-}
+
 function recurRadialWidth(newObj, limitWidth) {
 	while (newObj.length > limitWidth) {
 		newObj.splice(limitWidth, 1)
@@ -149,13 +140,16 @@ function recurRadialWidth(newObj, limitWidth) {
 	for (var i = 0; i < newObj.length; i++) {
 		if (newObj[i]._children && newObj[i]._children.length > 0) {
 			newObj[i]._children = recurRadialWidth(newObj[i]._children, limitWidth)
+		}else{
+			newObj[i]['callback'] = radialMenuOnSelect
 		}
+
 	}
 	return newObj
 }
 
 function genRadialWidth(obj,limitWidth){
-	var newObj = cloneObject(obj)
+	var newObj = JSON.parse(JSON.stringify(obj))
 	newObj._children = recurRadialWidth(newObj._children, limitWidth)
 	return newObj
 }
