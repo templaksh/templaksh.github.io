@@ -22,6 +22,17 @@ var tracker = new ExperimentTracker();
 var markingMenuSubscription = null;
 var radialMenuSvg = null;
 
+// Code to get participantID
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+var participantID = getUrlParameter("participantID")
+console.log('participantID: ',participantID);
+
 // Code for measuring distance
 var isDistTracking = false
 var curDist = 0
