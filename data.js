@@ -93,15 +93,18 @@ var fs = require('fs')
 resetParams()
 recurAddition(data,null,1,1)
 // console.log('fStr: ',fStr);
+fStr = fStr.substr(0,fStr.length-1)
 fs.writeFileSync("./data/menu_depth_1.csv",fStr)
 
 resetParams()
 recurAddition(data, null, 1, 2)
 // console.log('fStr: ',fStr);
+fStr = fStr.substr(0,fStr.length-1)
 fs.writeFileSync("./data/menu_depth_2.csv",fStr)
 
 
 resetParams()
 recurAddition(data, null, 1, 3)
+fStr = fStr.substr(0,fStr.length-1)
 fs.writeFileSync("./data/menu_depth_3.csv",fStr)
 // console.log('fStr: ', fStr);
