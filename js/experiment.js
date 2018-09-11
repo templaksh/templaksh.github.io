@@ -164,12 +164,12 @@ function nextTrial() {
 			initializeMarkingMenu();
 
 			if (menuDepth == 1) {
-				menu = MarkingMenu(markingMenuL1, document.getElementById('marking-menu-container'));
+				menu = MarkingMenu(genMarkingWidth(markingMenuL1,menuBreadth), document.getElementById('marking-menu-container'));
 			}
 			else if (menuDepth == 2) {
-				menu = MarkingMenu(markingMenuL2, document.getElementById('marking-menu-container'));
+				menu = MarkingMenu(genMarkingWidth(markingMenuL2,menuBreadth), document.getElementById('marking-menu-container'));
 			} else if (menuDepth == 3) {
-				menu = MarkingMenu(markingMenuL3, document.getElementById('marking-menu-container'));
+				menu = MarkingMenu(genMarkingWidth(markingMenuL3,menuBreadth), document.getElementById('marking-menu-container'));
 			}
 
 			markingMenuSubscription = menu.subscribe((selection) => markingMenuOnSelect(selection));
