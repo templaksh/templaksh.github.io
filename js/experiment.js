@@ -132,7 +132,16 @@ function genMarkingWidth(obj, limitWidth) {
 	newObj = recurMarkingWidth(newObj, limitWidth)
 	return newObj
 }
-
+function cloneObject(obj) {
+    var clone = {};
+    for(var i in obj) {
+        if(obj[i] != null &&  typeof(obj[i])=="object")
+            clone[i] = cloneObject(obj[i]);
+        else
+            clone[i] = obj[i];
+    }
+    return clone;
+}
 function recurRadialWidth(newObj, limitWidth) {
 	while (newObj.length > limitWidth) {
 		newObj.splice(limitWidth, 1)
@@ -146,7 +155,7 @@ function recurRadialWidth(newObj, limitWidth) {
 }
 
 function genRadialWidth(obj,limitWidth){
-	var newObj = JSON.parse(JSON.stringify(obj))
+	var newObj = cloneObject(obj)
 	newObj._children = recurRadialWidth(newObj._children, limitWidth)
 	return newObj
 }
