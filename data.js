@@ -10,7 +10,7 @@ var data = {
     Food: {
         Grains: ["Barley", "Teff", "Millet", "Oatmeal", "Corn", "Quinoa"],
         Fruits: ["Apple", "Pear", "Orange", "Grapes", "Kiwi", "Durian"],
-        Vegetables: ["Lettuce", "Spinach", "Cabbage", "Potato", "Onion", "Garlic"],
+        Vegetable: ["Lettuce", "Spinach", "Cabbage", "Potato", "Onion", "Garlic"],
         Dairy: ["Ghee", "Smen", "Kefir", "Curds", "Quark", "Whey"],
         Protein: ["Eggs", "Beef", "Bacon", "Tripe", "Venison", "Mutton"],
         Oils: ["Olive", "Canola", "Flaxseed", "Avocado", "Walnut", "Sesame"],
@@ -42,8 +42,8 @@ var data = {
     },
 }
 
-var maxStrLen = 10 //"Vegetables"
-// var maxStrLen = 9 //"Continent"
+// var maxStrLen = 10 //"Vegetables"
+var maxStrLen = 9 //"Continent"
 // var maxStrLen = 13 //"Rock Climbing"
 var itemToId = {}
 var idToItem = {}
@@ -89,15 +89,19 @@ function recurAddition(itemList, parent, depth, maxDepth) {
     }
 }
 
-// resetParams()
-// recurAddition(data,null,1,1)
+var fs = require('fs')
+resetParams()
+recurAddition(data,null,1,1)
 // console.log('fStr: ',fStr);
+fs.writeFileSync("./data/menu_depth_1.csv",fStr)
 
-// resetParams()
-// recurAddition(data, null, 1, 2)
+resetParams()
+recurAddition(data, null, 1, 2)
 // console.log('fStr: ',fStr);
+fs.writeFileSync("./data/menu_depth_2.csv",fStr)
 
 
 resetParams()
 recurAddition(data, null, 1, 3)
+fs.writeFileSync("./data/menu_depth_3.csv",fStr)
 // console.log('fStr: ', fStr);
