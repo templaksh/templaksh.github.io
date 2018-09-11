@@ -80,12 +80,14 @@ function initExperiment() {
 	for (var i = 1; i <= numTrials; i++) {
 		var cells = records[i].split(",");
 		var menuType = cells[0].trim();
-		var menuDepth = cells[1].trim();
-		var targetItem = cells[2].trim();
+		var menuBreadth = cells[1].trim();
+		var menuDepth = cells[2].trim();
+		var targetItem = cells[3].trim();
 		trialsData[i] = {
 			'Menu Type': menuType,
 			'Menu Depth': menuDepth,
-			'Target Item': targetItem
+			'Target Item': targetItem,
+			'Menu Breadth':menuBreadth
 		};
 	}
 
@@ -122,10 +124,12 @@ function nextTrial() {
 		var menuType = trialsData[currentTrial]['Menu Type'];
 		var menuDepth = trialsData[currentTrial]['Menu Depth'];
 		var targetItem = trialsData[currentTrial]['Target Item'];
+		var menuBreadth = trialsData[currentTrial]['Menu Breadth'];
 
 		document.getElementById("trialNumber").innerHTML = String(currentTrial) + "/" + String(numTrials);
 		document.getElementById("menuType").innerHTML = menuType;
 		document.getElementById("menuDepth").innerHTML = menuDepth;
+		document.getElementById("menuBreadth").innerHTML = menuBreadth;
 		document.getElementById("targetItem").innerHTML = targetItem;
 		document.getElementById("selectedItem").innerHTML = "&nbsp;";
 		// Set IV3 state over here
