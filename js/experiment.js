@@ -133,6 +133,23 @@ function genMarkingWidth(obj, limitWidth) {
 	return newObj
 }
 
+function recurRadialWidth(newObj, limitWidth) {
+	while (newObj.length > limitWidth) {
+		newObj.splice(limitWidth, 1)
+	}
+	for (var i = 0; i < newObj.length; i++) {
+		if (newObj[i]._children.length > 0) {
+			newObj[i]._children = recurRadialWidth(newObj[i]._children, limitWidth)
+		}
+	}
+	return newObj
+}
+
+function genRadialWidth(obj,limitWidth){
+	var newObj = JSON.parse(JSON.stringify(obj))
+	newObj._children = recurRadialWidth(newObj._children, limitWidth)
+	return newObj
+}
 // Move to next trai and record events
 function nextTrial() {
 
@@ -178,15 +195,13 @@ function nextTrial() {
 
 			initializeRadialMenu();
 			if (menuDepth == 1) {
-				menu = createRadialMenu(radialMenuL1);
+				menu = createRadialMenu(genRadialWidth(radialMenuL1,menuBreadth));
 			}
 			else if (menuDepth == 2) {
-				menu = createRadialMenu(radialMenuL2);
+				menu = createRadialMenu(genRadialWidth(radialMenuL2,menuBreadth));
 			} else if (menuDepth == 3) {
-				menu = createRadialMenu(radialMenuL3);
+				menu = createRadialMenu(genRadialWidth(radialMenuL3,menuBreadth));
 			}
-
-
 		}
 
 		currentTrial++;
