@@ -138,6 +138,7 @@ function nextTrial() {
 		tracker.trial = currentTrial;
 		tracker.menuType = menuType;
 		tracker.menuDepth = menuDepth;
+		tracker.menuBreadth = menuBreadth
 		tracker.targetItem = targetItem;
 
 		if (menuType === "Marking") {
