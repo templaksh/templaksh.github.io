@@ -458,12 +458,17 @@ function radialMenuOnSelect() {
 	attempt += 1
 	if (attempt >= maxAttempt) {
 		document.getElementById("nextButton").disabled = false
+		$("#help").html("You can click on the next button to proceed.");
 	}
 	if (attempt <= maxAttempt) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = this.id;
 		// document.getElementById("radial-menu-container").addEventListener("click",toggleRadialMenu,false)
 		document.getElementById("radial-menu-container").onclick = toggleRadialMenu
+	}
+
+	if ( currentTrial>= 9) {
+		$("#help").html("You can click on the next button to proceed.Remember to take breaks and drink water");
 	}
 }
 
