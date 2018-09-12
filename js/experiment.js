@@ -201,6 +201,8 @@ function nextTrial() {
 		document.getElementById("targetItem").innerHTML = targetItem;
 		document.getElementById("selectedItem").innerHTML = "&nbsp;";
 
+		document.getElementById("attempt").innerHTML = attempt+"/"+maxAttempt;
+
 		document.getElementById("nextButton").disabled = true
 		// Set IV3 state over here
 
