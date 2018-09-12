@@ -12,6 +12,10 @@ genExperiments.js generates the experiment data files (similar to experiment.csv
 Example experiments1.csv is the experiment file that will be used by participant who is in the ordering of 1 (participantID = 1)
 We also use genExperiments to generate the arrangements, ordering and trials as required by the pdf file. These additional files are stored in otherData folder and have been included at the end of the A1_P1.docx file
 
+You can run the 2 files mentioned above with node
+$ node data.js
+$ node genExperiments.js
+
 IMPORTANT NOTE: In the experiment, I changed the name of "Trials" to "Conditions" since it is what we learnt in the lecture. The number of attempts per condition is called "Trials" instead so that it ties closely with lecture materials.
 
 The next button is only enabled after user has completed 3 trials per condition. This is to ensure that all users complete the necessary trials and conditions.
