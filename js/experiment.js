@@ -348,7 +348,7 @@ function markingMenuOnSelect(selectedItem) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = selectedItem.name;
 	}
-	if ( currentTrial>= 9) {
+	if ( currentTrial>= 9 && attempt >= maxAttempt) {
 		$("#help").html("You can click on the next button to proceed. Remember to take breaks and drink water");
 	}
 }
@@ -467,7 +467,7 @@ function radialMenuOnSelect() {
 		document.getElementById("radial-menu-container").onclick = toggleRadialMenu
 	}
 
-	if ( currentTrial>= 9) {
+	if ( currentTrial>= 9 && attempt >= maxAttempt) {
 		$("#help").html("You can click on the next button to proceed. Remember to take breaks and drink water");
 	}
 }
