@@ -33,6 +33,7 @@ function getUrlParameter(name) {
 };
 
 var participantID = JSON.parse(localStorage.getItem('preQ')).participantID
+tracker.participantID = participantID
 // var participantID = getUrlParameter("participantID")
 console.log('participantID: ', participantID);
 
