@@ -5,6 +5,7 @@ const trialsFile = "./data/experiments.csv"
 const menuL1File = "./data/menu_depth_1.csv"
 const menuL2File = "./data/menu_depth_2.csv"
 const menuL3File = "./data/menu_depth_3.csv"
+const maxAttempt = 3
 
 // Global variables
 var menu;
@@ -333,7 +334,10 @@ function markingMenuOnSelect(selectedItem) {
 	tracker.recordSelectedItem(selectedItem.name, curDist);
 	document.getElementById("selectedItem").innerHTML = selectedItem.name;
 	attempt+=1
-	document.getElementById("attempt").innerHTML = attempt;
+	document.getElementById("attempt").innerHTML = attempt+"/"+maxAttempt;
+	if(attempt >= maxAttempt){
+		nextTrial()
+	}
 }
 
 function preventRightClick(e) {
