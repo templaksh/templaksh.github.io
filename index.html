@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Experiment to compare Marking and Radial menus</title>
+    <title>Consent to participate in experiment</title>
 </head>
 
 <body>
@@ -15,11 +15,16 @@
                 window.location.href = "experiment.html"+queryString
         }
     </script> -->
-    <form action="experiment.html" method="GET">
-        <input id="name" type="text" name="participantID" placeholder="Enter your ID here" value="">
-        <!-- <input type="submit" value="Submit"> -->
-
-        <button onclick="submit()">Submit</button>
+    <form action="pre-questionaire.html" method="GET">
+        <!-- <input id="name" type="text" name="participantID" placeholder="Enter your ID here" value=""> -->
+        <p> This is a experiment to find out if marking menu or radial menus are better. Your participation will be useful in
+            attaining this objective.
+        </p>
+        <p>All information collected will be used internally only. We may publish results but your name will be kepth confidential.
+            By agreeing to participate in this experiment, you agree to allow us to make use of your data for the analysis
+            of this experiment. </p>
+        <p>If you do not agree, you may choose to leave this website.</p>
+        <button onclick="submit()">Agree</button>
     </form>
 </body>
 
