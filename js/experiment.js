@@ -85,7 +85,7 @@ function getMenus() {
 	// breadth+depth
 	var configList = [[2, 1], [2, 2], [2, 3], [4, 1], [4, 2], [4, 3], [6, 1], [6, 2], [6, 3],]
 	configList.forEach(config => {
-		curMenu = getData(".data/menu" + config[0] + "_" + config[1] + ".csv")
+		var curMenu = getData(".data/menu" + config[0] + "_" + config[1] + ".csv")
 		key = config[0] + "" + config[1]
 		markingJsonMenu[key] = formatMarkingMenuData(curMenu)
 		radialJsonMenu[key] = formatRadialMenuData(curMenu)
