@@ -8772,6 +8772,10 @@
     function attrTween(d, i) {
       var f = tween.call(this, d, i, this.getAttribute(name));
       return f && function(t) {
+          console.log('t: ',t);
+          console.log('typeof(t): ',typeof(t));
+          var im = f(t)
+          console.log('im: ',im);
         this.setAttribute(name, f(t));
       };
     }
