@@ -335,10 +335,11 @@ function markingMenuOnSelect(selectedItem) {
 	curDist = stopDistTracking()
 	tracker.recordSelectedItem(selectedItem.name, curDist);
 	document.getElementById("selectedItem").innerHTML = selectedItem.name;
-	attempt+=1
-	document.getElementById("attempt").innerHTML = attempt+"/"+maxAttempt;
-	if(attempt >= maxAttempt){
+	attempt += 1
+	if (attempt >= maxAttempt) {
 		document.getElementById("nextButton").disabled = false
+	} else {
+		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 	}
 }
 
