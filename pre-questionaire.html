@@ -70,7 +70,8 @@
             function dlForm() {
                 jsonObj = FormDataToJSON(document.getElementById("qn"))
                 var hiddenLink = document.createElement('a');
-                hiddenLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(jsonObj);
+                hiddenLink.href = 'data:text/csv;charset=utf-8,' + JSON.stringify(jsonObj);
+                // hiddenLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(jsonObj);
                 hiddenLink.target = '_blank';
                 hiddenLink.download = 'qn.json';
                 document.body.appendChild(hiddenLink);
