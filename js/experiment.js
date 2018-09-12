@@ -256,6 +256,7 @@ function nextTrial() {
 		var nextButton = document.getElementById("nextButton");
 		nextButton.innerHTML = "Done";
 		tracker.toCsv();
+		window.location = "./post-questionaire.html"
 	}
 }
 
