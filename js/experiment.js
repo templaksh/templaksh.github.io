@@ -200,6 +200,8 @@ function nextTrial() {
 		document.getElementById("menuBreadth").innerHTML = menuBreadth;
 		document.getElementById("targetItem").innerHTML = targetItem;
 		document.getElementById("selectedItem").innerHTML = "&nbsp;";
+
+		document.getElementById("nextButton").disabled = true
 		// Set IV3 state over here
 
 		tracker.newTrial();
@@ -336,7 +338,7 @@ function markingMenuOnSelect(selectedItem) {
 	attempt+=1
 	document.getElementById("attempt").innerHTML = attempt+"/"+maxAttempt;
 	if(attempt >= maxAttempt){
-		nextTrial()
+		document.getElementById("nextButton").disabled = false
 	}
 }
 
