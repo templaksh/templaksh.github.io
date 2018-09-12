@@ -1,0 +1,19 @@
+Condition,Ordering,Menu Type,Menu Breadth,Menu Depth,Target Item
+1,5,Marking,4,1,Food
+2,5,Marking,4,2,Fruits
+3,5,Marking,4,3,Jeans
+4,5,Marking,6,1,Sports
+5,5,Marking,6,2,China
+6,5,Marking,6,3,Cap
+7,5,Marking,2,1,Animals
+8,5,Marking,2,2,Mammals
+9,5,Marking,2,3,Apple
+10,5,Radial,4,1,Food
+11,5,Radial,4,2,Fruits
+12,5,Radial,4,3,Jeans
+13,5,Radial,6,1,Sports
+14,5,Radial,6,2,China
+15,5,Radial,6,3,Cap
+16,5,Radial,2,1,Animals
+17,5,Radial,2,2,Mammals
+18,5,Radial,2,3,Apple

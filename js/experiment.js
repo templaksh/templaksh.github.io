@@ -84,16 +84,17 @@ function getData(relativePath) {
 function initExperiment() {
 
 	// Get Trails
-	var data = getData(trialsFile);
+	// var data = getData(trialsFile);
+	var data = getData("./data/experiments"+participantID+".csv");
 
 	var records = data.split("\n");
 	numTrials = records.length - 1;
 	for (var i = 1; i <= numTrials; i++) {
 		var cells = records[i].split(",");
-		var menuType = cells[0].trim();
-		var menuBreadth = cells[1].trim();
-		var menuDepth = cells[2].trim();
-		var targetItem = cells[3].trim();
+		var menuType = cells[2].trim();
+		var menuBreadth = cells[3].trim();
+		var menuDepth = cells[4].trim();
+		var targetItem = cells[5].trim();
 		trialsData[i] = {
 			'Menu Type': menuType,
 			'Menu Depth': menuDepth,

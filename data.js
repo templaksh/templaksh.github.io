@@ -1,11 +1,13 @@
 var data = {
     Animals: {
+        Birds: ["Eagle", "Seagull", "Parrot", "Owl", "Crane", "Penguin"],
         Reptiles: ["Snakes", "Turtle", "Lizard", "Crocodile", "Gecko", "Iguanids"],
         Fish: ["Guppy", "Goldfish", "Tench", "Zander", "Swordfish", "Whiting"],
-        Amphibian: ["Smooth newt", "Tomato Frog", "Water Frog", "Salamander", "Golden Frog", "Sunset Frog"],
-        Invetebrates: ["Silverfish", "Bedbug", "Mealworm", "Snail", "Spider", "Crab"],
+        // Amphibian: ["Smooth newt", "Tomato Frog", "Water Frog", "Salamander", "Golden Frog", "Sunset Frog"],
+        // Invetebrates: ["Silverfish", "Bedbug", "Mealworm", "Snail", "Spider", "Crab"],
+        Amphibian: ["Newt", "Frog", "Caecilian", "Salamander", "Blindworm", "Toad"],
+        Arthropod:["Crab","Butterfly","Scorpion","Mites","Lobster","Shrimp"],
         Mammals: ["Bat", "Rodent", "Bear", "Deer", "Sloth", "Ape"],
-        Birds: ["Eagle", "Seagull", "Parrot", "Owl", "Crane", "Penguin"],
     },
     Food: {
         Grains: ["Barley", "Teff", "Millet", "Oatmeal", "Corn", "Quinoa"],
@@ -15,8 +17,16 @@ var data = {
         Protein: ["Eggs", "Beef", "Bacon", "Tripe", "Venison", "Mutton"],
         Oils: ["Olive", "Canola", "Flaxseed", "Avocado", "Walnut", "Sesame"],
     },
+    Education:{
+        Chemistry:["Kasha","Lamm","Langmuir","Nernst","Ostwald","Raoult"],
+        Physics:["Ampere","Birch","Gauss","Byerlee","Coulomb","Curie"],
+        Math:["Benford","Dirac","Godel","Hilbert","Peano","Niven"],
+        Economics:["Keynesian","Marxism","Solow","Laffer","Auctions","Rubinomic"],
+        Biology:["Darwin","Gene","Cell","Nucleus","Neuron","Ganglion"],
+        Geography:["Hydrology","Pedology","Glacial","Waterfall","Erosion","Pollution"],
+    },
     Clothing: {
-        Tops: ["T-Shirt", "Polo Shirts", "Shirts", "Flannel", "Blouse", "Dress"],
+        Tops: ["T-Shirt", "Henley", "Shirts", "Flannel", "Blouse", "Dress"],
         Bottoms: ["Jeans", "Leggings", "Tights", "Skirts", "Pants", "Shorts"],
         Outerwear: ["Coat", "Jacket", "Sweaters", "Cardigans", "Blousons", "Parka"],
         Shoes: ["Sneakers", "Boat Shoe", "Brogues", "Sandals", "Chukka", "Slip-Ons"],
@@ -35,11 +45,13 @@ var data = {
     Sports: {
         Games: ["Football", "Hockey", "Soccer", "Basketball", "Netball", "Cricket"],
         Athletics: ["Shot Put", "Javelin", "Discus", "Sprints", "Relays", "Hurdles"],
-        Gymnastics: ["Tumbling", "Acrobatic", "Artistic", "Trampoline", "Rhythmic", "Group"],
+        Gymnastic: ["Tumbling", "Acrobatic", "Artistic", "Trampoline", "Rhythmic", "Group"],
         Water: ["Diving", "Waboba", "Kayaking", "Rafting", "Canoeing", "Surfing"],
         Dance: ["Balle", "Hi-Hop", "Contra", "Tap Dance", "Salsa", "Flamenco"],
-        Mountain: ["Skiing", "Ice Climbing", "Skyrunning", "Trekking", "Canyoning", "Rock Climbing"]
+        // Mountain: ["Skiing", "Ice Climbing", "Skyrunning", "Trekking", "Canyoning", "Rock Climbing"]
+        Fighting:["MMA","Karate","Taekwondo","Jijitsu","Silat","Boxing"]
     },
+
 }
 
 // var maxStrLen = 10 //"Vegetables"

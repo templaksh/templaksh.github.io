@@ -1,0 +1,7 @@
+Ordering,Menu Type,Menu Breadth,Menu Depth
+1,Radial,Marking,2,4,6,1,2,3
+2,Radial,Marking,4,6,2,1,2,3
+3,Radial,Marking,6,2,4,1,2,3
+4,Marking,Radial,2,4,6,1,2,3
+5,Marking,Radial,4,6,2,1,2,3
+6,Marking,Radial,6,2,4,1,2,3
