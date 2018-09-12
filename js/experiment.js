@@ -52,10 +52,8 @@ function startDistTracking(e) {
 }
 
 $(document).mousemove(function (event) {
-	// if(prevPos.x) {
 	if (isDistTracking) {
 		curDist += Math.sqrt(Math.pow(prevPos.y - event.clientY, 2) + Math.pow(prevPos.x - event.clientX, 2));
-		// $('span').text('So far your mouse ran this many pixels:   ' + Math.round(totalDistance));
 		prevPos.x = event.clientX;
 		prevPos.y = event.clientY;
 		console.log('movingDist: ', curDist);
@@ -371,7 +369,8 @@ function initializeRadialMenu() {
 	var interactionContainer = document.getElementById('interaction-container');
 	var radialMenuContainer = document.getElementById('radial-menu-container');
 	if (radialMenuContainer == null) {
-		interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" oncontextmenu=\"toggleRadialMenu(event)\"></div>";
+		interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" oncontextmenu=\"onclick(event)\"></div>";
+		// interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" oncontextmenu=\"toggleRadialMenu(event)\"></div>";
 	}
 
 }
