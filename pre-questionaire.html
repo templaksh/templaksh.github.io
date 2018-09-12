@@ -7,6 +7,8 @@
 </head>
 
 <body>
+
+    <script src="./js/external/jquery-3.3.1.min.js"></script>
     <h2>Instructions</h2>
     <h3>Goal:</h3>
     <p>The goal of this experiment is to compare the performance between marking menu and radial menu. During the experiment,
@@ -87,10 +89,10 @@
                 var preQ = {
                     userName: $("#userName").value,
                     participantID: $("#participantID").value,
-                    optradio:optradio,
-                    optradio2:optradio2,
+                    optradio: optradio,
+                    optradio2: optradio2,
                 }
-                window.localStorage.setItem("preQ",preQ);
+                window.localStorage.setItem("preQ", preQ);
                 // userName = $("#userName").value
                 // participantID = $("#participantID").value
 
@@ -124,5 +126,5 @@
         <button type="submit">Proceed to experiment</button>
     </form> -->
 </body>
-<script src="./js/external/jquery-3.3.1.min.js"></script>
+
 </html>
