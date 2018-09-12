@@ -6,7 +6,7 @@ Condition,Ordering,Menu Type,Menu Breadth,Menu Depth,Target Item
 5,2,Radial,6,2,China
 6,2,Radial,6,3,Cap
 7,2,Radial,2,1,Animals
-8,2,Radial,2,2,Mammals
+8,2,Radial,2,2,Birds
 9,2,Radial,2,3,Apple
 10,2,Marking,4,1,Food
 11,2,Marking,4,2,Fruits
@@ -15,5 +15,5 @@ Condition,Ordering,Menu Type,Menu Breadth,Menu Depth,Target Item
 14,2,Marking,6,2,China
 15,2,Marking,6,3,Cap
 16,2,Marking,2,1,Animals
-17,2,Marking,2,2,Mammals
+17,2,Marking,2,2,Birds
 18,2,Marking,2,3,Apple
