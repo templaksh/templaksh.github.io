@@ -67,9 +67,9 @@
 
         <h3>Please check if you are familiar with the menus below </h3>
         <label class="checkbox-inline">
-            <input type="checkbox" name="MarkingMenu" value="">Marking Menu</label>
+            <input type="checkbox" name="MarkingMenu" value="Marking Menu">Marking Menu</label>
         <label class="checkbox-inline">
-            <input type="checkbox" name="RadialMenu" value="">Radial Menu</label>
+            <input type="checkbox" name="RadialMenu" value="Radial Menu">Radial Menu</label>
         <script>
             var userName = ""
             var optradio = ""
@@ -91,6 +91,8 @@
                     participantID: $("#participantID").value,
                     optradio: optradio,
                     optradio2: optradio2,
+                    // checkbox:var checkedValue = $('.messageCheckbox:checked').val();
+                    checkbox: $('.messageCheckbox:checked').val(),
                 }
                 window.localStorage.setItem("preQ", preQ);
                 // userName = $("#userName").value
