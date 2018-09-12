@@ -32,7 +32,8 @@ function getUrlParameter(name) {
 	return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
-var participantID = getUrlParameter("participantID")
+var participantID = JSON.parse(localStorage.getItem('preQ')).participantID
+// var participantID = getUrlParameter("participantID")
 console.log('participantID: ', participantID);
 
 // Code for measuring distance
