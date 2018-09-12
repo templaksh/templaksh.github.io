@@ -13,7 +13,8 @@ class ExperimentTracker {
 		this.selectedItem = null;
 		this.startTime = null;
 		this.endTime = null;
-		this.menuBreadth = null
+		this.menuBreadth = null;
+		this.participantID = null;
 
 		// track dist
 		this.distance = null;
@@ -38,7 +39,7 @@ class ExperimentTracker {
 		
 		this.endTime = Date.now();
 		// this.trials.push([this.trial, this.attempt, this.menuType, this.menuDepth, this.targetItem, this.selectedItem, this.startTime, this.endTime])
-		this.trials.push([this.trial, this.attempt, this.menuType, this.menuBreadth,this.menuDepth, this.targetItem, this.selectedItem, this.startTime, this.endTime, this.endTime-this.startTime,this.distance])
+		this.trials.push([this.participantID,this.trial, this.attempt, this.menuType, this.menuBreadth,this.menuDepth, this.targetItem, this.selectedItem, this.startTime, this.endTime, this.endTime-this.startTime,this.distance])
 		this.resetTimers();
 		this.attempt++;
 
@@ -50,7 +51,7 @@ class ExperimentTracker {
 
 	toCsv() {
 		// var csvFile = "Trial,Attempt,Menu Type,Menu Depth,Target Item,Selected Item,Start Time, End Time\n";
-		var csvFile = "Trial,Attempt,Menu Type,Menu Breadth,Menu Depth,Target Item,Selected Item,Start Time, End Time, Time Difference, Cursor Distance\n";
+		var csvFile = "Participant ID,Conditions,Trials,Menu Type,Menu Breadth,Menu Depth,Target Item,Selected Item,Start Time, End Time, Time Difference, Cursor Distance\n";
 		for (var i = 0; i < this.trials.length; i++) {
 			csvFile += this.trials[i].join(',');
 			csvFile += "\n";
