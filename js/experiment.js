@@ -334,13 +334,13 @@ function markingMenuOnMouseDown(e) {
 function markingMenuOnSelect(selectedItem) {
 	curDist = stopDistTracking()
 	tracker.recordSelectedItem(selectedItem.name, curDist);
-	document.getElementById("selectedItem").innerHTML = selectedItem.name;
 	attempt += 1
 	if (attempt >= maxAttempt) {
 		document.getElementById("nextButton").disabled = false
 	} 
 	if (attempt <= maxAttempt) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
+		document.getElementById("selectedItem").innerHTML = selectedItem.name;
 	}
 }
 
