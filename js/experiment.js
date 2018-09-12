@@ -24,14 +24,14 @@ var radialMenuSvg = null;
 
 // Code to get participantID
 function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+	name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+	var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+	var results = regex.exec(location.search);
+	return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
 var participantID = getUrlParameter("participantID")
-console.log('participantID: ',participantID);
+console.log('participantID: ', participantID);
 
 // Code for measuring distance
 var isDistTracking = false
@@ -78,6 +78,19 @@ function getData(relativePath) {
 	xmlHttp.send(null);
 	return xmlHttp.responseText;
 }
+var radialJsonMenu = {}
+var markingJsonMenu = {}
+
+function getMenus() {
+	// breadth+depth
+	var configList = [[2, 1], [2, 2], [2, 3], [4, 1], [4, 2], [4, 3], [6, 1], [6, 2], [6, 3],]
+	configList.forEach(config => {
+		curMenu = getData(".data/menu" + config[0] + "_" + config[1] + ".csv")
+		key = config[0] + "" + config[1]
+		markingJsonMenu[key] = formatMarkingMenuData(curMenu)
+		radialJsonMenu[key] = formatRadialMenuData(curMenu)
+	})
+}
 
 
 // Loads the CSV data files on page load and store it to global variables
@@ -85,7 +98,7 @@ function initExperiment() {
 
 	// Get Trails
 	// var data = getData(trialsFile);
-	var data = getData("./data/experiments"+participantID+".csv");
+	var data = getData("./data/experiments" + participantID + ".csv");
 
 	var records = data.split("\n");
 	numTrials = records.length - 1;
@@ -115,6 +128,8 @@ function initExperiment() {
 	radialMenuL1 = formatRadialMenuData(menuL1Data);
 	radialMenuL2 = formatRadialMenuData(menuL2Data);
 	radialMenuL3 = formatRadialMenuData(menuL3Data);
+
+	getMenus()
 
 	//Start the first trial
 	nextTrial();
@@ -152,7 +167,7 @@ function recurRadialWidth(newObj, limitWidth) {
 	for (var i = 0; i < newObj.length; i++) {
 		if (newObj[i]._children && newObj[i]._children.length > 0) {
 			newObj[i]._children = recurRadialWidth(newObj[i]._children, limitWidth)
-		}else{
+		} else {
 			newObj[i]['callback'] = radialMenuOnSelect
 		}
 
@@ -160,7 +175,7 @@ function recurRadialWidth(newObj, limitWidth) {
 	return newObj
 }
 
-function genRadialWidth(obj,limitWidth){
+function genRadialWidth(obj, limitWidth) {
 	var newObj = JSON.parse(JSON.stringify(obj))
 	newObj._children = recurRadialWidth(newObj._children, limitWidth)
 	return newObj
@@ -195,28 +210,38 @@ function nextTrial() {
 
 			initializeMarkingMenu();
 
-			if (menuDepth == 1) {
-				menu = MarkingMenu(genMarkingWidth(markingMenuL1,menuBreadth), document.getElementById('marking-menu-container'));
-			}
-			else if (menuDepth == 2) {
-				menu = MarkingMenu(genMarkingWidth(markingMenuL2,menuBreadth), document.getElementById('marking-menu-container'));
-			} else if (menuDepth == 3) {
-				menu = MarkingMenu(genMarkingWidth(markingMenuL3,menuBreadth), document.getElementById('marking-menu-container'));
-			}
+			// if (menuDepth == 1) {
+			// 	menu = MarkingMenu(markingMenuL1, document.getElementById('marking-menu-container'));
+			// 	// menu = MarkingMenu(genMarkingWidth(markingMenuL1,menuBreadth), document.getElementById('marking-menu-container'));
+			// }
+			// else if (menuDepth == 2) {
+			// 	menu = MarkingMenu(markingMenuL2, document.getElementById('marking-menu-container'));
+			// 	// menu = MarkingMenu(genMarkingWidth(markingMenuL2,menuBreadth), document.getElementById('marking-menu-container'));
+			// } else if (menuDepth == 3) {
+			// 	menu = MarkingMenu(markingMenuL3, document.getElementById('marking-menu-container'));
+			// 	// menu = MarkingMenu(genMarkingWidth(markingMenuL3,menuBreadth), document.getElementById('marking-menu-container'));
+			// }
+			key = menuBreadth+""+menuDepth
+			menu = MarkingMenu(markingJsonMenu[key], document.getElementById('marking-menu-container'));
 
 			markingMenuSubscription = menu.subscribe((selection) => markingMenuOnSelect(selection));
 
 		} else if (menuType === "Radial") {
 
 			initializeRadialMenu();
-			if (menuDepth == 1) {
-				menu = createRadialMenu(genRadialWidth(radialMenuL1,menuBreadth));
-			}
-			else if (menuDepth == 2) {
-				menu = createRadialMenu(genRadialWidth(radialMenuL2,menuBreadth));
-			} else if (menuDepth == 3) {
-				menu = createRadialMenu(genRadialWidth(radialMenuL3,menuBreadth));
-			}
+			key = menuBreadth+""+menuDepth
+				menu = createRadialMenu(radialJsonMenu[key]);
+			// if (menuDepth == 1) {
+			// 	menu = createRadialMenu(radialMenuL1);
+			// 	// menu = createRadialMenu(genRadialWidth(radialMenuL1,menuBreadth));
+			// }
+			// else if (menuDepth == 2) {
+			// 	menu = createRadialMenu(radialMenuL2);
+			// 	// menu = createRadialMenu(genRadialWidth(radialMenuL2,menuBreadth));
+			// } else if (menuDepth == 3) {
+			// 	menu = createRadialMenu(radialMenuL3);
+			// 	// menu = createRadialMenu(genRadialWidth(radialMenuL3,menuBreadth));
+			// }
 		}
 
 		currentTrial++;
