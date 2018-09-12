@@ -21,6 +21,7 @@ var radialMenuL3 = [];
 var tracker = new ExperimentTracker();
 var markingMenuSubscription = null;
 var radialMenuSvg = null;
+var attempt = 0
 
 // Code to get participantID
 function getUrlParameter(name) {
@@ -185,6 +186,7 @@ function nextTrial() {
 
 
 	if (currentTrial <= numTrials) {
+		attempt = 0
 
 		var menuType = trialsData[currentTrial]['Menu Type'];
 		var menuDepth = trialsData[currentTrial]['Menu Depth'];
@@ -330,6 +332,8 @@ function markingMenuOnSelect(selectedItem) {
 	curDist = stopDistTracking()
 	tracker.recordSelectedItem(selectedItem.name, curDist);
 	document.getElementById("selectedItem").innerHTML = selectedItem.name;
+	attempt+=1
+	document.getElementById("attempt").innerHTML = attempt;
 }
 
 function preventRightClick(e) {
