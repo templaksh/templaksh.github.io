@@ -86,7 +86,7 @@ function getMenus() {
 	var configList = [[2, 1], [2, 2], [2, 3], [4, 1], [4, 2], [4, 3], [6, 1], [6, 2], [6, 3],]
 	configList.forEach(config => {
 		var curMenu = getData(".data/menu" + config[0] + "_" + config[1] + ".csv")
-		key = config[0] + "" + config[1]
+		var key = config[0] + "" + config[1]
 		markingJsonMenu[key] = formatMarkingMenuData(curMenu)
 		radialJsonMenu[key] = formatRadialMenuData(curMenu)
 	})
@@ -221,7 +221,7 @@ function nextTrial() {
 			// 	menu = MarkingMenu(markingMenuL3, document.getElementById('marking-menu-container'));
 			// 	// menu = MarkingMenu(genMarkingWidth(markingMenuL3,menuBreadth), document.getElementById('marking-menu-container'));
 			// }
-			key = menuBreadth+""+menuDepth
+			var key = menuBreadth + "" + menuDepth
 			menu = MarkingMenu(markingJsonMenu[key], document.getElementById('marking-menu-container'));
 
 			markingMenuSubscription = menu.subscribe((selection) => markingMenuOnSelect(selection));
@@ -229,8 +229,8 @@ function nextTrial() {
 		} else if (menuType === "Radial") {
 
 			initializeRadialMenu();
-			key = menuBreadth+""+menuDepth
-				menu = createRadialMenu(radialJsonMenu[key]);
+			var key = menuBreadth + "" + menuDepth
+			menu = createRadialMenu(radialJsonMenu[key]);
 			// if (menuDepth == 1) {
 			// 	menu = createRadialMenu(radialMenuL1);
 			// 	// menu = createRadialMenu(genRadialWidth(radialMenuL1,menuBreadth));
