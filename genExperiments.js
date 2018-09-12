@@ -17,7 +17,7 @@ var typeArr = [
 // Keys breadth+Depth
 var targetItem = {
     21:"Animals",
-    22:"Mammals",
+    22:"Birds",
     23:"Apple",
     41:"Food",
     42:"Fruits",
