@@ -445,7 +445,7 @@ function radialMenuOnSelect() {
 	} 
 	if (attempt <= maxAttempt) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
-		document.getElementById("selectedItem").innerHTML = selectedItem.name;
+		document.getElementById("selectedItem").innerHTML = this.id;
 	}
 }
 
