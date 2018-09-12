@@ -45,8 +45,8 @@ var prevPos = { x: null, y: null }
 function startDistTracking(e) {
 	isDistTracking = true
 	curDist = 0
-	console.log('e.clientX: ', e.clientX);
-	console.log('e.clientY: ', e.clientY);
+	// console.log('e.clientX: ', e.clientX);
+	// console.log('e.clientY: ', e.clientY);
 	prevPos.x = e.clientX
 	prevPos.y = e.clientY
 }
@@ -56,7 +56,7 @@ $(document).mousemove(function (event) {
 		curDist += Math.sqrt(Math.pow(prevPos.y - event.clientY, 2) + Math.pow(prevPos.x - event.clientX, 2));
 		prevPos.x = event.clientX;
 		prevPos.y = event.clientY;
-		console.log('movingDist: ', curDist);
+		// console.log('movingDist: ', curDist);
 	}
 });
 
@@ -397,6 +397,8 @@ function createRadialMenu(radialMenuL) {
 
 // Toggle radial menu on right click
 function toggleRadialMenu(e) {
+	console.log('e.clientX: ',e.clientX);
+	console.log('e.clientY: ',e.clientY);
 
 	if (tracker.startTime == null) {
 
