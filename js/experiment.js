@@ -338,7 +338,8 @@ function markingMenuOnSelect(selectedItem) {
 	attempt += 1
 	if (attempt >= maxAttempt) {
 		document.getElementById("nextButton").disabled = false
-	} else {
+	} 
+	if (attempt <= maxAttempt) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 	}
 }
