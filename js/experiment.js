@@ -419,9 +419,11 @@ function toggleRadialMenu(e) {
 
 		if (radialMenuTree != null) {
 
-			document.getElementById("radial-menu-container").onclick = function(){return false}
+			// document.getElementById("radial-menu-container").onclick = function(){return false}
+			document.getElementById("radial-menu-container").removeEventListener('click',function(){return false},false)
+
 			menu = module.exports(radialMenuTree, {
-				x: e.clientX,
+				x: e.clienX,
 				y: e.clientY
 			}, radialMenuSvg);
 
