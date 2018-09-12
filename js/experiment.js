@@ -438,7 +438,15 @@ function radialMenuOnSelect() {
 	var radialmenu = document.getElementById('radialmenu');
 	radialmenu.parentNode.removeChild(radialmenu);
 
-	document.getElementById("selectedItem").innerHTML = this.id;
+	// document.getElementById("selectedItem").innerHTML = this.id;
+	attempt += 1
+	if (attempt >= maxAttempt) {
+		document.getElementById("nextButton").disabled = false
+	} 
+	if (attempt <= maxAttempt) {
+		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
+		document.getElementById("selectedItem").innerHTML = selectedItem.name;
+	}
 }
 
 //Formats csv menu data in the structure accepted by radial menu
