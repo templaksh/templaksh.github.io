@@ -1,0 +1,133 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Post-questionaire and Instructions</title>
+</head>
+
+<body>
+
+    <script src="./js/external/jquery-3.3.1.min.js"></script>
+    <h2>Post-questionaire</h2>
+    <form id="qn" action="end.html" method="GET">
+        <h3>Rate the ease of usage of marking menu? (1 being most difficult) </h3>
+        <label class="radio-inline">
+            <input type="radio" name="optradio" checked value="1">1</label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio" value="2">2</label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio" value="3">3</label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio" value="4">4</label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio" value="5">5</label>
+
+        <h3>Rate the ease of usage of radial menu? (1 being most difficult) </h3>
+        <label class="radio-inline">
+            <input type="radio" name="optradio2" checked value="1">1</label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio2" value="2">2</label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio2" value="3">3</label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio2" value="4">4</label>
+        <label class="radio-inline">
+            <input type="radio" name="optradio2" value="5">5</label>
+
+        <h3>Did you have any difficulties with marking menu? If so, what were issues?</h3>
+        <textarea id="diffMark" rows="4" cols="50"></textarea>
+
+        <h3>Did you have any difficulties with radial menu? If so, what were issues?</h3>
+        <textarea id="diffRadial" rows="4" cols="50"></textarea>
+
+        <h3>Did you attempt the stroking method for marking menu? If so, how was the experience?</h3>
+        <textarea id="strokeTech" rows="4" cols="50"></textarea>
+
+        <h3>Which menu did you prefer overall? (Please Circle)</h3>
+        <label class="radio-inline">
+                <input type="radio" name="optradioPref" value="Radial Menu">Radial Menu</label>
+
+        <label class="radio-inline">
+                <input type="radio" name="optradioPref" value="Marking Menu">Marking Menu</label>
+
+        <h3>Why?</h3>
+        <textarea id="why" rows="4" cols="50"></textarea>
+
+        <h3>Any suggestions for improvement?</h3>
+        <textarea id="improv" rows="4" cols="50"></textarea>
+        
+        <script>
+            $(document).ready(function () {
+                $('input[name=optradio]').on('change', function () {
+                    optradio = $(this).val()
+                    console.log('optradio: ', optradio);
+                })
+                $('input[name=optradio2]').on('change', function () {
+                    optradio2 = $(this).val()
+                    console.log('optradio2: ', optradio2);
+                })
+                $('input[name=optradioPref]').on('change', function () {
+                    optradioPref = $(this).val()
+                    console.log('optradioPref: ', optradioPref);
+                })
+            })
+            function store() {
+                var postQ = {
+                    optradio: optradio,
+                    optradio2: optradio2,
+                    optradioPref:optradioPref,
+                    diffMark:$("#diffMark").val(),
+                    diffRadial:$("$diffRadial").val(),
+                    strokeTech:$("#strokeTech").val(),
+                    why:$("#why").val(),
+                    improv:$("#improv").val(),
+                }
+                console.log('PostQ: ', postQ);
+                // window.localStorage.setItem("PostQ", JSON.stringify(PostQ));
+
+                var preQ = JSON.parse(localStorage.getItem("preQ"))
+                var fullQ = {
+                    preQ:preQ,
+                    postQ:postQ,
+                }
+                var hiddenLink = document.createElement('a');
+                hiddenLink.href = 'data:text/csv;charset=utf-8,' + JSON.stringify(fullQ);
+                // hiddenLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(jsonObj);
+                hiddenLink.target = '_blank';
+                hiddenLink.download = 'qn.json';
+                document.body.appendChild(hiddenLink);
+                hiddenLink.click();
+
+            }
+            // function dlForm() {
+            //     jsonObj = FormDataToJSON(document.getElementById("qn"))
+            //     var hiddenLink = document.createElement('a');
+            //     hiddenLink.href = 'data:text/csv;charset=utf-8,' + JSON.stringify(jsonObj);
+            //     // hiddenLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(jsonObj);
+            //     hiddenLink.target = '_blank';
+            //     hiddenLink.download = 'qn.json';
+            //     document.body.appendChild(hiddenLink);
+            //     hiddenLink.click();
+            // }
+            // function FormDataToJSON(FormElement) {
+            //     var formData = new FormData(FormElement);
+            //     var ConvertedJSON = {};
+            //     for (const [key, value] of formData.entries()) {
+            //         ConvertedJSON[key] = value;
+            //     }
+
+            //     return ConvertedJSON
+            // }
+        </script>
+        <div class="row">
+            <button onclick="store()" type="submit" class="btn btn-default">Next</button>
+        </div>
+    </form>
+    <!-- <form action="experiment.html" method="GET">
+
+        <button type="submit">Proceed to experiment</button>
+    </form> -->
+</body>
+
+</html>
