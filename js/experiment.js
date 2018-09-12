@@ -369,8 +369,8 @@ function initializeRadialMenu() {
 	var interactionContainer = document.getElementById('interaction-container');
 	var radialMenuContainer = document.getElementById('radial-menu-container');
 	if (radialMenuContainer == null) {
-		// interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" onclick=\"toggleRadialMenu(event)\"></div>";
-		interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" oncontextmenu=\"toggleRadialMenu(event)\"></div>";
+		interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" onclick=\"toggleRadialMenu(event)\"></div>";
+		// interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" oncontextmenu=\"toggleRadialMenu(event)\"></div>";
 	}
 
 }
@@ -401,6 +401,7 @@ function toggleRadialMenu(e) {
 	if (tracker.startTime == null) {
 
 		if (radialMenuTree != null) {
+			$("radial-menu-container").prop("onclick", null).off("click");
 			menu = module.exports(radialMenuTree, {
 				x: e.clientX,
 				y: e.clientY
