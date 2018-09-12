@@ -348,8 +348,8 @@ function markingMenuOnSelect(selectedItem) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = selectedItem.name;
 	}
-	if (numTrials >= 9) {
-		$("#help").html("Remember to take breaks and drink water");
+	if ( currentTrial>= 9) {
+		$("#help").html("You can click on the next button to proceed.Remember to take breaks and drink water");
 	}
 }
 
