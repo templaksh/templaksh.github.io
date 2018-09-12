@@ -447,6 +447,7 @@ function radialMenuOnSelect() {
 	if (attempt <= maxAttempt) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = this.id;
+		document.getElementById("radial-menu-container").addEventListener("click",toggleRadialMenu,false)
 	}
 }
 
