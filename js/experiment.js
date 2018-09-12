@@ -418,6 +418,8 @@ function toggleRadialMenu(e) {
 		tracker.recordSelectedItem(null, null);
 
 		if (radialMenuTree != null) {
+
+			document.getElementById("radial-menu-container").onclick = function(){return false}
 			menu = module.exports(radialMenuTree, {
 				x: e.clientX,
 				y: e.clientY
