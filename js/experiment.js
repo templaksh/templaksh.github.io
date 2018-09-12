@@ -200,7 +200,7 @@ function nextTrial() {
 		document.getElementById("targetItem").innerHTML = targetItem;
 		document.getElementById("selectedItem").innerHTML = "&nbsp;";
 
-		document.getElementById("attempt").innerHTML = attempt+"/"+maxAttempt;
+		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 
 		document.getElementById("nextButton").disabled = true
 		// Set IV3 state over here
@@ -232,6 +232,7 @@ function nextTrial() {
 
 			markingMenuSubscription = menu.subscribe((selection) => markingMenuOnSelect(selection));
 
+			$("#help").html("Click in the yellow box to access menu. (Optional)You can try stroking the along the path of the option to select it.");
 		} else if (menuType === "Radial") {
 
 			initializeRadialMenu();
@@ -248,6 +249,8 @@ function nextTrial() {
 			// 	menu = createRadialMenu(radialMenuL3);
 			// 	// menu = createRadialMenu(genRadialWidth(radialMenuL3,menuBreadth));
 			// }
+
+			$("#help").html("Click in the yellow box to access menu.");
 		}
 
 		currentTrial++;
@@ -338,11 +341,15 @@ function markingMenuOnSelect(selectedItem) {
 	tracker.recordSelectedItem(selectedItem.name, curDist);
 	attempt += 1
 	if (attempt >= maxAttempt) {
+		$("#help").html("You can click on the next button to proceed.");
 		document.getElementById("nextButton").disabled = false
-	} 
+	}
 	if (attempt <= maxAttempt) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = selectedItem.name;
+	}
+	if (numTrials >= 9) {
+		$("#help").html("Remember to take breaks and drink water");
 	}
 }
 
@@ -399,8 +406,8 @@ function createRadialMenu(radialMenuL) {
 
 // Toggle radial menu on right click
 function toggleRadialMenu(e) {
-	console.log('e.clientX: ',e.clientX);
-	console.log('e.clientY: ',e.clientY);
+	console.log('e.clientX: ', e.clientX);
+	console.log('e.clientY: ', e.clientY);
 
 	if (tracker.startTime == null) {
 
@@ -411,7 +418,7 @@ function toggleRadialMenu(e) {
 				y: parseFloat(e.clientY)
 			}, radialMenuSvg);
 
-			document.getElementById("radial-menu-container").onclick = function(){return false}
+			document.getElementById("radial-menu-container").onclick = function () { return false }
 			// Start timing once menu appears
 			tracker.startTimer();
 			startDistTracking(e)
@@ -430,7 +437,7 @@ function toggleRadialMenu(e) {
 				y: parseFloat(e.clientY)
 			}, radialMenuSvg);
 
-			document.getElementById("radial-menu-container").onclick = function(){return false}
+			document.getElementById("radial-menu-container").onclick = function () { return false }
 			// Start timing once menu appears
 			tracker.startTimer();
 			startDistTracking(e)
@@ -451,7 +458,7 @@ function radialMenuOnSelect() {
 	attempt += 1
 	if (attempt >= maxAttempt) {
 		document.getElementById("nextButton").disabled = false
-	} 
+	}
 	if (attempt <= maxAttempt) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = this.id;
