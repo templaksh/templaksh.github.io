@@ -419,8 +419,8 @@ function toggleRadialMenu(e) {
 
 		if (radialMenuTree != null) {
 
-			// document.getElementById("radial-menu-container").onclick = function(){return false}
-			document.getElementById("radial-menu-container").removeEventListener('click',toggleRadialMenu,false)
+			document.getElementById("radial-menu-container").onclick = function(){return false}
+			// document.getElementById("radial-menu-container").removeEventListener('click',toggleRadialMenu,false)
 
 			menu = module.exports(radialMenuTree, {
 				x: e.clienX,
@@ -451,7 +451,8 @@ function radialMenuOnSelect() {
 	if (attempt <= maxAttempt) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = this.id;
-		document.getElementById("radial-menu-container").addEventListener("click",toggleRadialMenu,false)
+		// document.getElementById("radial-menu-container").addEventListener("click",toggleRadialMenu,false)
+		document.getElementById("radial-menu-container").onclick = toggleRadialMenu
 	}
 }
 
