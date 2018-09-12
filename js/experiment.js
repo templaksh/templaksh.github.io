@@ -402,12 +402,12 @@ function toggleRadialMenu(e) {
 
 		if (radialMenuTree != null) {
 			// $("radial-menu-container").prop("onclick", null).off("click");
-			document.getElementById("radial-menu-container").onclick = function(){return false}
 			menu = module.exports(radialMenuTree, {
 				x: e.clientX,
 				y: e.clientY
 			}, radialMenuSvg);
 
+			document.getElementById("radial-menu-container").onclick = function(){return false}
 			// Start timing once menu appears
 			tracker.startTimer();
 			startDistTracking(e)
@@ -419,7 +419,6 @@ function toggleRadialMenu(e) {
 
 		if (radialMenuTree != null) {
 
-			document.getElementById("radial-menu-container").onclick = function(){return false}
 			// document.getElementById("radial-menu-container").removeEventListener('click',toggleRadialMenu,false)
 
 			menu = module.exports(radialMenuTree, {
@@ -427,6 +426,7 @@ function toggleRadialMenu(e) {
 				y: e.clientY
 			}, radialMenuSvg);
 
+			document.getElementById("radial-menu-container").onclick = function(){return false}
 			// Start timing once menu appears
 			tracker.startTimer();
 			startDistTracking(e)
