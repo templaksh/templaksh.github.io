@@ -401,7 +401,8 @@ function toggleRadialMenu(e) {
 	if (tracker.startTime == null) {
 
 		if (radialMenuTree != null) {
-			$("radial-menu-container").prop("onclick", null).off("click");
+			// $("radial-menu-container").prop("onclick", null).off("click");
+			document.getElementById("radial-menu-container").onclick = function(){return false}
 			menu = module.exports(radialMenuTree, {
 				x: e.clientX,
 				y: e.clientY
