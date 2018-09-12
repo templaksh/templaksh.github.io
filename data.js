@@ -6,7 +6,7 @@ var data = {
         // Amphibian: ["Smooth newt", "Tomato Frog", "Water Frog", "Salamander", "Golden Frog", "Sunset Frog"],
         // Invetebrates: ["Silverfish", "Bedbug", "Mealworm", "Snail", "Spider", "Crab"],
         Amphibian: ["Newt", "Frog", "Caecilian", "Salamander", "Blindworm", "Toad"],
-        Arthropod:["Crab","Butterfly","Scorpion","Mites","Lobster","Shrimp"],
+        Arthropod: ["Crab", "Butterfly", "Scorpion", "Mites", "Lobster", "Shrimp"],
         Mammals: ["Bat", "Rodent", "Bear", "Deer", "Sloth", "Ape"],
     },
     Food: {
@@ -17,13 +17,13 @@ var data = {
         Protein: ["Eggs", "Beef", "Bacon", "Tripe", "Venison", "Mutton"],
         Oils: ["Olive", "Canola", "Flaxseed", "Avocado", "Walnut", "Sesame"],
     },
-    Education:{
-        Chemistry:["Kasha","Lamm","Langmuir","Nernst","Ostwald","Raoult"],
-        Physics:["Ampere","Birch","Gauss","Byerlee","Coulomb","Curie"],
-        Math:["Benford","Dirac","Godel","Hilbert","Peano","Niven"],
-        Economics:["Keynesian","Marxism","Solow","Laffer","Auctions","Rubinomic"],
-        Biology:["Darwin","Gene","Cell","Nucleus","Neuron","Ganglion"],
-        Geography:["Hydrology","Pedology","Glacial","Waterfall","Erosion","Pollution"],
+    Education: {
+        Chemistry: ["Kasha", "Lamm", "Langmuir", "Nernst", "Ostwald", "Raoult"],
+        Physics: ["Ampere", "Birch", "Gauss", "Byerlee", "Coulomb", "Curie"],
+        Math: ["Benford", "Dirac", "Godel", "Hilbert", "Peano", "Niven"],
+        Economics: ["Keynesian", "Marxism", "Solow", "Laffer", "Auctions", "Rubinomic"],
+        Biology: ["Darwin", "Gene", "Cell", "Nucleus", "Neuron", "Ganglion"],
+        Geography: ["Hydrology", "Pedology", "Glacial", "Waterfall", "Erosion", "Pollution"],
     },
     Clothing: {
         Tops: ["T-Shirt", "Henley", "Shirts", "Flannel", "Blouse", "Dress"],
@@ -49,7 +49,7 @@ var data = {
         Water: ["Diving", "Waboba", "Kayaking", "Rafting", "Canoeing", "Surfing"],
         Dance: ["Balle", "Hi-Hop", "Contra", "Tap Dance", "Salsa", "Flamenco"],
         // Mountain: ["Skiing", "Ice Climbing", "Skyrunning", "Trekking", "Canyoning", "Rock Climbing"]
-        Fighting:["MMA","Karate","Taekwondo","Jijitsu","Silat","Boxing"]
+        Fighting: ["MMA", "Karate", "Taekwondo", "Jijitsu", "Silat", "Boxing"]
     },
 
 }
@@ -70,8 +70,8 @@ function resetParams() {
 }
 
 function addItem(item, parent) {
-    if(item.length > maxStrLen){
-        console.log('item: ',item);
+    if (item.length > maxStrLen) {
+        console.log('item: ', item);
     }
     uid += 1
     id = uid
@@ -82,41 +82,69 @@ function addItem(item, parent) {
 }
 
 // depth start from level 1
-function recurAddition(itemList, parent, depth, maxDepth) {
+function recurAddition(itemList, parent, depth, maxDepth, maxWidth) {
     if (depth <= maxDepth) {
+        var lvl1Width = 1
         for (var child in itemList) {
-            addItem(child, parent)
+            if (lvl1Width <= maxWidth) {
+                addItem(child, parent)
+                lvl1Width += 1
+            }
         }
+        var lvl1Width = 1
         for (var child in itemList) {
-            if (itemList[child] instanceof Array) {
-                for (var i = 0; i < itemList[child].length; i++) {
-                    if (depth + 1 <= maxDepth) {
-                        addItem(itemList[child][i], child)
+            if (lvl1Width <= maxWidth) {
+                lvl1Width+=1
+                if (itemList[child] instanceof Array) {
+                    var lvl2Width = 1
+                    for (var i = 0; i < itemList[child].length; i++) {
+                        if (depth + 1 <= maxDepth) {
+                            if (lvl2Width <= maxWidth) {
+                                addItem(itemList[child][i], child)
+                                lvl2Width += 1
+                            }
+                        }
                     }
+                } else {
+                    recurAddition(itemList[child], child, depth + 1, maxDepth, maxWidth)
                 }
-            } else {
-                recurAddition(itemList[child], child, depth + 1, maxDepth)
             }
         }
     }
 }
 
 var fs = require('fs')
-resetParams()
-recurAddition(data,null,1,1)
-// console.log('fStr: ',fStr);
-fStr = fStr.substr(0,fStr.length-1)
-fs.writeFileSync("./data/menu_depth_1.csv",fStr)
+// breadth+depth
+var configList = [
+    [2, 1],
+    [2, 2],
+    [2, 3],
+    [4, 1],
+    [4, 2],
+    [4, 3],
+    [6, 1],
+    [6, 2],
+    [6, 3],
+]
+function genFiles(configBreadth, configDepth) {
+    resetParams()
+    recurAddition(data, null, 1, configDepth, configBreadth)
+    // console.log('fStr: ',fStr);
+    fStr = fStr.substr(0, fStr.length - 1)
+    fs.writeFileSync("./data/menu" + configBreadth + "_" + configDepth + ".csv", fStr)
+}
+configList.forEach(config => {
+    genFiles(config[0], config[1])
+})
+// resetParams()
+// recurAddition(data, null, 1, 2)
+// // console.log('fStr: ',fStr);
+// fStr = fStr.substr(0, fStr.length - 1)
+// fs.writeFileSync("./data/menu_depth_2.csv", fStr)
 
-resetParams()
-recurAddition(data, null, 1, 2)
-// console.log('fStr: ',fStr);
-fStr = fStr.substr(0,fStr.length-1)
-fs.writeFileSync("./data/menu_depth_2.csv",fStr)
 
-
-resetParams()
-recurAddition(data, null, 1, 3)
-fStr = fStr.substr(0,fStr.length-1)
-fs.writeFileSync("./data/menu_depth_3.csv",fStr)
-// console.log('fStr: ', fStr);
+// resetParams()
+// recurAddition(data, null, 1, 3)
+// fStr = fStr.substr(0, fStr.length - 1)
+// fs.writeFileSync("./data/menu_depth_3.csv", fStr)
+// // console.log('fStr: ', fStr);

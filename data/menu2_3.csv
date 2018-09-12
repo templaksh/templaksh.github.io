@@ -1,0 +1,15 @@
+Id,Parent,Label
+1,0,Animals
+2,0,Food
+3,1,Birds
+4,1,Reptiles
+5,3,Eagle
+6,3,Seagull
+7,4,Snakes
+8,4,Turtle
+9,2,Grains
+10,2,Fruits
+11,9,Barley
+12,9,Teff
+13,10,Apple
+14,10,Pear
