@@ -372,7 +372,7 @@ function initializeRadialMenu() {
 		interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" onclick=\"toggleRadialMenu(event)\"></div>";
 		// interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" oncontextmenu=\"toggleRadialMenu(event)\"></div>";
 	}
-
+	document.getElementById("radial-menu-container").onclick = toggleRadialMenu
 }
 
 // Create radial menu svg element
@@ -513,3 +513,6 @@ function formatRadialMenuData(data) {
 	};
 
 }
+
+// To check radial listener
+// getEventListeners(document.getElementById("radial-menu-container")).click[0].listener
