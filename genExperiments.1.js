@@ -56,9 +56,10 @@ var targetItem = {
 
 
 var breadthArr = [
-    [2, 4, 6],
+    // [2, 4, 6],
     // [4, 6, 2],
     // [6, 2, 4]
+    [4,6]
 ]
 
 var depthArr = [1, 2, 3]
