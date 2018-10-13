@@ -107,11 +107,13 @@ function initExperiment() {
 	for (var i = 1; i <= numTrials; i++) {
 		var cells = records[i].split(",");
 		var trialId = cells[0].trim()
+		var condNum = cells[1].trim()
 		var menuType = cells[3].trim();
 		var menuBreadth = cells[4].trim();
 		var menuDepth = cells[5].trim();
 		var targetItem = cells[6].trim();
 		trialsData[i] = {
+			"CondNum":condNum,
 			"Trial ID":trialId,
 			'Menu Type': menuType,
 			'Menu Depth': menuDepth,
@@ -196,8 +198,10 @@ function nextTrial() {
 		var targetItem = trialsData[currentTrial]['Target Item'];
 		var menuBreadth = trialsData[currentTrial]['Menu Breadth'];
 		var trialId = trialsData[currentTrial]['Trial ID'];
+		var condNum = trialsData[currentTrial]['CondNum']
 
-		document.getElementById("trialNumber").innerHTML = String(currentTrial) + "/" + String(numTrials);
+		// document.getElementById("trialNumber").innerHTML = String(currentTrial) + "/" + String(numTrials);
+		document.getElementById("trialNumber").innerHTML = String(condNum) + "/" + String(18);
 		document.getElementById("menuType").innerHTML = menuType;
 		document.getElementById("menuDepth").innerHTML = menuDepth;
 		document.getElementById("menuBreadth").innerHTML = menuBreadth;
