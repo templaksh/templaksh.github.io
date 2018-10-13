@@ -379,10 +379,10 @@ function initializeRadialMenu() {
 	var interactionContainer = document.getElementById('interaction-container');
 	var radialMenuContainer = document.getElementById('radial-menu-container');
 	if (radialMenuContainer == null) {
-		interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" onclick=\"toggleRadialMenu(event)\"></div>";
-		// interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" oncontextmenu=\"toggleRadialMenu(event)\"></div>";
+		// interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" onclick=\"toggleRadialMenu(event)\"></div>";
+		interactionContainer.innerHTML += "<div id=\"radial-menu-container\" style=\"height:100%;width:100%\" oncontextmenu=\"toggleRadialMenu(event)\"></div>";
 	}
-	document.getElementById("radial-menu-container").onclick = toggleRadialMenu
+	// document.getElementById("radial-menu-container").onclick = toggleRadialMenu
 }
 
 // Create radial menu svg element
@@ -419,7 +419,7 @@ function toggleRadialMenu(e) {
 				y: parseFloat(e.clientY)
 			}, radialMenuSvg);
 
-			document.getElementById("radial-menu-container").onclick = function () { return false }
+			// document.getElementById("radial-menu-container").onclick = function () { return false }
 			// Start timing once menu appears
 			tracker.startTimer();
 			startDistTracking(e)
@@ -438,7 +438,7 @@ function toggleRadialMenu(e) {
 				y: parseFloat(e.clientY)
 			}, radialMenuSvg);
 
-			document.getElementById("radial-menu-container").onclick = function () { return false }
+			// document.getElementById("radial-menu-container").onclick = function () { return false }
 			// Start timing once menu appears
 			tracker.startTimer();
 			startDistTracking(e)
@@ -465,7 +465,7 @@ function radialMenuOnSelect() {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = this.id;
 		// document.getElementById("radial-menu-container").addEventListener("click",toggleRadialMenu,false)
-		document.getElementById("radial-menu-container").onclick = toggleRadialMenu
+		// document.getElementById("radial-menu-container").onclick = toggleRadialMenu
 	}
 
 	if ( currentTrial>= 9 && attempt >= maxAttempt) {
