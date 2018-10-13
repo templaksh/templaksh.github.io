@@ -26,8 +26,6 @@ We also display a help text between the table of trials and the yellow box. This
 
 We store the questionaire and other data in localStorage and download it at the end of the experiment
 
-Also, used the eventListener to enable and disable the click for radialMenu so we no longer need to just use right-click. We can use left-click (Easier for mobile devices) but we immediately disable the onclick to prevent repetition and enable it back after selection of an option.
-
 For distance measuring, we use the onmousemove function to read the values once the user has clicked in the yellow box and stop upon selection of the option.
 
 I also added an additional column that shows the time difference between the start and end. This is to allow us to easily see the difference instead of calculating manually each time.
