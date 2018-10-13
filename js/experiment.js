@@ -201,7 +201,7 @@ function nextTrial() {
 		var condNum = trialsData[currentTrial]['CondNum']
 
 		// document.getElementById("trialNumber").innerHTML = String(currentTrial) + "/" + String(numTrials);
-		document.getElementById("trialNumber").innerHTML = String(condNum) + "/" + String(18);
+		document.getElementById("trialNumber").innerHTML = String(condNum) + "/" + String(12);
 		document.getElementById("menuType").innerHTML = menuType;
 		document.getElementById("menuDepth").innerHTML = menuDepth;
 		document.getElementById("menuBreadth").innerHTML = menuBreadth;
