@@ -349,7 +349,7 @@ function markingMenuOnSelect(selectedItem) {
 	curDist = stopDistTracking()
 	tracker.recordSelectedItem(selectedItem.name, curDist);
 	attempt += 1
-	if (attempt >= 3) {
+	if (attempt >= maxAttempt) {
 		$("#help").html("You can click on the next button to proceed.");
 		document.getElementById("nextButton").disabled = false
 	}
@@ -465,7 +465,7 @@ function radialMenuOnSelect() {
 
 	// document.getElementById("selectedItem").innerHTML = this.id;
 	attempt += 1
-	if (attempt >= 3) {
+	if (attempt >= maxAttempt) {
 		document.getElementById("nextButton").disabled = false
 		$("#help").html("You can click on the next button to proceed.");
 	}
