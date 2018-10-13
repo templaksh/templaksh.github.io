@@ -349,7 +349,7 @@ function markingMenuOnSelect(selectedItem) {
 	curDist = stopDistTracking()
 	tracker.recordSelectedItem(selectedItem.name, curDist);
 	attempt += 1
-	if (attempt >= maxAttempt) {
+	if (attempt >= 3) {
 		$("#help").html("You can click on the next button to proceed.");
 		document.getElementById("nextButton").disabled = false
 	}
@@ -357,7 +357,7 @@ function markingMenuOnSelect(selectedItem) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = selectedItem.name;
 	}
-	if ( currentTrial>= 9 && attempt >= maxAttempt) {
+	if ( currentTrial>= 9 && attempt >= 3) {
 		$("#help").html("You can click on the next button to proceed. Remember to take breaks and drink water");
 	}
 }
@@ -465,7 +465,7 @@ function radialMenuOnSelect() {
 
 	// document.getElementById("selectedItem").innerHTML = this.id;
 	attempt += 1
-	if (attempt >= maxAttempt) {
+	if (attempt >= 3) {
 		document.getElementById("nextButton").disabled = false
 		$("#help").html("You can click on the next button to proceed.");
 	}
@@ -476,7 +476,7 @@ function radialMenuOnSelect() {
 		// document.getElementById("radial-menu-container").onclick = toggleRadialMenu
 	}
 
-	if ( currentTrial>= 9 && attempt >= maxAttempt) {
+	if ( currentTrial>= 9 && attempt >= 3) {
 		$("#help").html("You can click on the next button to proceed. Remember to take breaks and drink water");
 	}
 }
