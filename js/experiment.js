@@ -113,8 +113,8 @@ function initExperiment() {
 		var menuDepth = cells[5].trim();
 		var targetItem = cells[6].trim();
 		trialsData[i] = {
-			"CondNum":condNum,
-			"Trial ID":trialId,
+			"CondNum": condNum,
+			"Trial ID": trialId,
 			'Menu Type': menuType,
 			'Menu Depth': menuDepth,
 			'Target Item': targetItem,
@@ -186,6 +186,7 @@ function genRadialWidth(obj, limitWidth) {
 	newObj._children = recurRadialWidth(newObj._children, limitWidth)
 	return newObj
 }
+gTracker = 0
 // Move to next trai and record events
 function nextTrial() {
 
@@ -215,11 +216,17 @@ function nextTrial() {
 		// Set IV3 state over here
 
 		tracker.newTrial();
-		tracker.trial = currentTrial;
+		tracker.trial = condNum;
 		tracker.menuType = menuType;
 		tracker.menuDepth = menuDepth;
 		tracker.menuBreadth = menuBreadth
 		tracker.targetItem = targetItem;
+		if (gTracker > 2) {
+			gTracker = 0
+		}
+		tracker.attempt = gTracker
+		gTracker += 1
+
 
 		if (menuType === "Marking") {
 
@@ -357,7 +364,7 @@ function markingMenuOnSelect(selectedItem) {
 		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 		document.getElementById("selectedItem").innerHTML = selectedItem.name;
 	}
-	if ( currentTrial>= 9 && attempt >= 3) {
+	if (currentTrial >= 9 && attempt >= 3) {
 		$("#help").html("You can click on the next button to proceed. Remember to take breaks and drink water");
 	}
 }
@@ -476,7 +483,7 @@ function radialMenuOnSelect() {
 		// document.getElementById("radial-menu-container").onclick = toggleRadialMenu
 	}
 
-	if ( currentTrial>= 9 && attempt >= 3) {
+	if (currentTrial >= 9 && attempt >= 3) {
 		$("#help").html("You can click on the next button to proceed. Remember to take breaks and drink water");
 	}
 }
