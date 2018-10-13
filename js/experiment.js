@@ -186,7 +186,7 @@ function genRadialWidth(obj, limitWidth) {
 	newObj._children = recurRadialWidth(newObj._children, limitWidth)
 	return newObj
 }
-var gTracker = 0
+var gTracker = 1
 // Move to next trai and record events
 function nextTrial() {
 
@@ -221,8 +221,8 @@ function nextTrial() {
 		tracker.menuDepth = menuDepth;
 		tracker.menuBreadth = menuBreadth
 		tracker.targetItem = targetItem;
-		if (gTracker > 2) {
-			gTracker = 0
+		if (gTracker > 3) {
+			gTracker = 1
 		}
 		tracker.attempt = gTracker
 		gTracker += 1

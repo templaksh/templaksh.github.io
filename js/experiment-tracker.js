@@ -41,12 +41,12 @@ class ExperimentTracker {
 		// this.trials.push([this.trial, this.attempt, this.menuType, this.menuDepth, this.targetItem, this.selectedItem, this.startTime, this.endTime])
 		this.trials.push([this.participantID,this.trial, this.attempt, this.menuType, this.menuBreadth,this.menuDepth, this.targetItem, this.selectedItem, this.startTime, this.endTime, this.endTime-this.startTime,this.distance])
 		this.resetTimers();
-		this.attempt++;
+		// this.attempt++;
 
 	}
 
 	newTrial() {
-		this.attempt = 1;
+		// this.attempt = 1;
 	}
 
 	toCsv() {
