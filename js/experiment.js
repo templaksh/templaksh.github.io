@@ -186,7 +186,7 @@ function genRadialWidth(obj, limitWidth) {
 	newObj._children = recurRadialWidth(newObj._children, limitWidth)
 	return newObj
 }
-gTracker = 0
+var gTracker = 0
 // Move to next trai and record events
 function nextTrial() {
 
