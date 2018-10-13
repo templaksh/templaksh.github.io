@@ -106,11 +106,13 @@ function initExperiment() {
 	numTrials = records.length - 1;
 	for (var i = 1; i <= numTrials; i++) {
 		var cells = records[i].split(",");
-		var menuType = cells[2].trim();
-		var menuBreadth = cells[3].trim();
-		var menuDepth = cells[4].trim();
-		var targetItem = cells[5].trim();
+		var trialId = cells[0].trim()
+		var menuType = cells[3].trim();
+		var menuBreadth = cells[4].trim();
+		var menuDepth = cells[5].trim();
+		var targetItem = cells[6].trim();
 		trialsData[i] = {
+			"trialId":trialId,
 			'Menu Type': menuType,
 			'Menu Depth': menuDepth,
 			'Target Item': targetItem,
