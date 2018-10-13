@@ -5,7 +5,7 @@ const trialsFile = "./data/experiments.csv"
 const menuL1File = "./data/menu_depth_1.csv"
 const menuL2File = "./data/menu_depth_2.csv"
 const menuL3File = "./data/menu_depth_3.csv"
-const maxAttempt = 3
+const maxAttempt = 1
 
 // Global variables
 var menu;
@@ -112,7 +112,7 @@ function initExperiment() {
 		var menuDepth = cells[5].trim();
 		var targetItem = cells[6].trim();
 		trialsData[i] = {
-			"trialId":trialId,
+			"Trial ID":trialId,
 			'Menu Type': menuType,
 			'Menu Depth': menuDepth,
 			'Target Item': targetItem,
@@ -195,6 +195,7 @@ function nextTrial() {
 		var menuDepth = trialsData[currentTrial]['Menu Depth'];
 		var targetItem = trialsData[currentTrial]['Target Item'];
 		var menuBreadth = trialsData[currentTrial]['Menu Breadth'];
+		var trialId = trialsData[currentTrial]['Trial ID'];
 
 		document.getElementById("trialNumber").innerHTML = String(currentTrial) + "/" + String(numTrials);
 		document.getElementById("menuType").innerHTML = menuType;
@@ -203,7 +204,8 @@ function nextTrial() {
 		document.getElementById("targetItem").innerHTML = targetItem;
 		document.getElementById("selectedItem").innerHTML = "&nbsp;";
 
-		document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
+		document.getElementById("attempt").innerHTML = trialId + "/" + 3;
+		// document.getElementById("attempt").innerHTML = attempt + "/" + maxAttempt;
 
 		document.getElementById("nextButton").disabled = true
 		// Set IV3 state over here
