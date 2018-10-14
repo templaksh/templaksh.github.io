@@ -19,7 +19,7 @@
             <label for="pId">Participant ID</label>
             <input type="text" name="participantID" class="form-control" id="participantID">
         </div>
-        <h3>How frequently do you need to use menus? </h3>
+        <!-- <h3>How frequently do you need to use menus? </h3>
         <label class="radio-inline">
             <input type="radio" name="optradio" checked value="Sometimes">Sometimes</label>
         <label class="radio-inline">
@@ -40,31 +40,31 @@
         <label class="checkbox-inline">
             <input class="markingCheckbox" type="checkbox" name="MarkingMenu" value="Marking Menu">Marking Menu</label>
         <label class="checkbox-inline">
-            <input class="radialCheckbox" type="checkbox" name="RadialMenu" value="Radial Menu">Radial Menu</label>
+            <input class="radialCheckbox" type="checkbox" name="RadialMenu" value="Radial Menu">Radial Menu</label> -->
         <script>
             var userName = ""
             var optradio = ""
             var optradio2 = ""
             var participantID = ""
-            $(document).ready(function () {
-                $('input[name=optradio]').on('change', function () {
-                    optradio = $(this).val()
-                    console.log('optradio: ', optradio);
-                })
-                $('input[name=optradio2]').on('change', function () {
-                    optradio2 = $(this).val()
-                    console.log('optradio2: ', optradio2);
-                })
-            })
+            // $(document).ready(function () {
+            //     $('input[name=optradio]').on('change', function () {
+            //         optradio = $(this).val()
+            //         console.log('optradio: ', optradio);
+            //     })
+            //     $('input[name=optradio2]').on('change', function () {
+            //         optradio2 = $(this).val()
+            //         console.log('optradio2: ', optradio2);
+            //     })
+            // })
             function store() {
                 var preQ = {
                     userName: $("#userName").val(),
                     participantID: $("#participantID").val(),
-                    optradio: optradio,
-                    optradio2: optradio2,
+                    // optradio: optradio,
+                    // optradio2: optradio2,
                     // checkbox:var checkedValue = $('.messageCheckbox:checked').val();
-                    markingCheckbox: $('.markingCheckbox:checked').val(),
-                    radialCheckbox: $('.radialCheckbox:checked').val(),
+                    // markingCheckbox: $('.markingCheckbox:checked').val(),
+                    // radialCheckbox: $('.radialCheckbox:checked').val(),
                 }
                 console.log('preQ: ',preQ);
                 window.localStorage.setItem("preQ", JSON.stringify(preQ));
